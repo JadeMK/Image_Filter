@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include "bmp.h"
 
 int main(int argc, char *argv[]) {
 
@@ -19,11 +20,17 @@ int main(int argc, char *argv[]) {
 
     // Open input image & output file
     FILE *infile = fopen(in_name, "r");
-    FILE *outfile = fopen(out_name, "w");
-    if (infile == NULL || outfile == NULL)
+    if (infile == NULL)
     {
-        printf("Could not process.\n");
+        printf("Could not process. Check your infile.\n");
         return 2;
+    }
+    FILE *outfile = fopen(out_name, "w");
+    if (outfile == NULL)
+    {
+        fclose(infile);
+        printf("Could not process. Check your outfile.\n");
+        return 3;
     }
 
     return 0;
