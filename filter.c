@@ -33,6 +33,19 @@ int main(int argc, char *argv[]) {
         return 3;
     }
 
+    // Check BMP file header and info header
+    FILEHEADER fh;
+    fread(&fh, sizeof(FILEHEADER), 1, infile);
+    INFOHEADER ih;
+    fread(&ih, sizeof(INFOHEADER), 1, infile);
+    if (fh.bfType != 0x4d42 || fh.bfOffBits != 54 || ih.biSize != 40 || ih.biBitCount != 24 || ih.biCompression != 0)
+    {
+        fclose(infile);
+        fclose(outfile);
+        printf("Supported BMP format: 24-bit uncompressed BMP 4.0");
+        return 4;
+    }
+
     return 0;
 }
 
