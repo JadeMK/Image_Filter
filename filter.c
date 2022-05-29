@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdlib.h>
 #include "bmp.h"
 
 int main(int argc, char *argv[]) {
@@ -44,6 +45,18 @@ int main(int argc, char *argv[]) {
         fclose(outfile);
         printf("Supported BMP format: 24-bit uncompressed BMP 4.0");
         return 4;
+    }
+
+    // Memory allocation for the image
+    int height = abs(ih.biHeight);
+    int width = ih.biWidth;
+    RGB (*img)[width] = calloc(height, width * sizeof(RGB));
+    if (img == NULL)
+    {
+        printf("Could not process. Not enough memory.\n");
+        fclose(infile);
+        fclose(outfile);
+        return 5;
     }
 
     return 0;
