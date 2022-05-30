@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
     fread(&fh, sizeof(FILEHEADER), 1, infile);
     INFOHEADER ih;
     fread(&ih, sizeof(INFOHEADER), 1, infile);
+    // Check BMP format - implementation from Harvard's CS50 course - pset 4
     if (fh.bfType != 0x4d42 || fh.bfOffBits != 54 || ih.biSize != 40 || ih.biBitCount != 24 || ih.biCompression != 0)
     {
         fclose(infile);
@@ -57,6 +58,31 @@ int main(int argc, char *argv[]) {
         fclose(infile);
         fclose(outfile);
         return 5;
+    }
+
+    // Padding implementation from Harvard's CS50 course - pset 4
+    int padding = (4 - (width * sizeof(RGB)) % 4) % 4;
+
+    // Iterate through the input image - rows
+    for (int i = 0; i < height; i++)
+    {
+        fread(img[i], sizeof(RGB), width, infile);
+        fseek(infile, padding, SEEK_CUR);
+    }
+
+    // Choose filter WIP
+    switch (*choice) {
+        case 'r':
+            red(height, width, img);
+            break;
+
+        case 'g':
+            green(height, width, img);
+            break;
+
+        case 'b':
+            blue(height, width, img);
+            break;
     }
 
     return 0;
