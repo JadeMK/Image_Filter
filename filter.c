@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include "bmp.h"
 
+// Prototypes
+void red(int height, int width, RGB img[height][width]);
+void green(int height, int width, RGB img[height][width]);
+void blue(int height, int width, RGB img[height][width]);
+
 int main(int argc, char *argv[]) {
 
     // Check command validity
@@ -89,3 +94,17 @@ int main(int argc, char *argv[]) {
 }
 
 // Functions (R, G, B)
+void red(int height, int width, RGB img[height][width])
+{
+    return;
+}
+
+void green(int height, int width, RGB img[height][width])
+{
+    return;
+}
+
+void blue(int height, int width, RGB img[height][width])
+{
+    return;
+}
