@@ -92,6 +92,8 @@ int main(int argc, char *argv[]) {
     }
 
     // Write output values on outfile.bmp
+    fwrite(&fh, sizeof(FILEHEADER), 1, outfile);
+    fwrite(&ih, sizeof(INFOHEADER), 1, outfile);
 
     return 0;
 }
