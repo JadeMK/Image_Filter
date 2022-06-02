@@ -2,12 +2,13 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include "bmp.h"
 
 // Prototypes
 void red(int height, int width, RGB img[height][width]);
-void green(int height, int width, RGB img[height][width]);
-void blue(int height, int width, RGB img[height][width]);
+//void green(int height, int width, RGB img[height][width]);
+//void blue(int height, int width, RGB img[height][width]);
 
 int main(int argc, char *argv[]) {
 
@@ -81,14 +82,16 @@ int main(int argc, char *argv[]) {
             red(height, width, img);
             break;
 
-        case 'g':
-            green(height, width, img);
-            break;
-
-        case 'b':
-            blue(height, width, img);
-            break;
+//        case 'g':
+//            green(height, width, img);
+//            break;
+//
+//        case 'b':
+//            blue(height, width, img);
+//            break;
     }
+
+    // Write output values on outfile.bmp
 
     return 0;
 }
@@ -96,15 +99,13 @@ int main(int argc, char *argv[]) {
 // Functions (R, G, B)
 void red(int height, int width, RGB img[height][width])
 {
-    return;
-}
-
-void green(int height, int width, RGB img[height][width])
-{
-    return;
-}
-
-void blue(int height, int width, RGB img[height][width])
-{
+    // Iterate through the rows
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            float new_value;
+        }
+    }
     return;
 }
