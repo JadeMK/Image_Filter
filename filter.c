@@ -104,9 +104,12 @@ void red(int height, int width, RGB img[height][width])
     // Iterate through the rows
     for (int i = 0; i < height; i++)
     {
+        // Swap each pixel
         for (int j = 0; j < width; j++)
         {
-            float new_value;
+            // Evaluate values of the Green & Blue
+            float new_gb;
+            new_gb = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
         }
     }
     return;
