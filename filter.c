@@ -104,12 +104,17 @@ void red(int height, int width, RGB img[height][width])
     // Iterate through the rows
     for (int i = 0; i < height; i++)
     {
-        // Swap each pixel
+        // Replace each pixel with a new value
         for (int j = 0; j < width; j++)
         {
-            // Evaluate values of the Green & Blue
-            float new_gb;
-            new_gb = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
+            // Evaluate values
+            float new_grey, check_gb;
+            check_gb = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
+            if (img[i][j].rgbRed - check_gb > 75)
+            {
+                // Replace
+            }
+
         }
     }
     return;
