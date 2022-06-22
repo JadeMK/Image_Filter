@@ -108,11 +108,15 @@ void red(int height, int width, RGB img[height][width])
         for (int j = 0; j < width; j++)
         {
             // Evaluate values
-            float new_grey, check_gb;
+            float check_gb;
             check_gb = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
-            if (img[i][j].rgbRed - check_gb > 75)
+            if (img[i][j].rgbRed - check_gb < 75)
             {
-                // Replace
+                // Apply with new values
+                float new_grey = (img[i][j].rgbRed + img[i][j].rgbGreen + img[i][j].rgbBlue) / 3.0;
+                img[i][j].rgbRed = round(new_grey);
+                img[i][j].rgbGreen = round(new_grey);
+                img[i][j].rgbBlue = round(new_grey);
             }
 
         }
