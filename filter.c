@@ -7,8 +7,8 @@
 
 // Prototypes
 void red(int height, int width, RGB img[height][width]);
-//void green(int height, int width, RGB img[height][width]);
-//void blue(int height, int width, RGB img[height][width]);
+void green(int height, int width, RGB img[height][width]);
+void blue(int height, int width, RGB img[height][width]);
 
 int main(int argc, char *argv[]) {
 
@@ -82,13 +82,13 @@ int main(int argc, char *argv[]) {
             red(height, width, img);
             break;
 
-//        case 'g':
-//            green(height, width, img);
-//            break;
-//
-//        case 'b':
-//            blue(height, width, img);
-//            break;
+        case 'g':
+            green(height, width, img);
+            break;
+
+        case 'b':
+            blue(height, width, img);
+            break;
     }
 
     // Write output header values on outfile.bmp
@@ -96,7 +96,15 @@ int main(int argc, char *argv[]) {
     fwrite(&ih, sizeof(INFOHEADER), 1, outfile);
 
     // Write new pixel values
-
+    for (int j = 0; j < height; j++)
+    {
+        fwrite(img[j], sizeof(RGB), width, outfile);
+        // Padding
+        for (int k = 0; k < padding; k++)
+        {
+            fputc(0x00, outfile);
+        }
+    }
     // Free memory
 
     // Close files
@@ -127,5 +135,15 @@ void red(int height, int width, RGB img[height][width])
 
         }
     }
+    return;
+}
+
+void green(int height, int width, RGB img[height][width])
+{
+    return;
+}
+
+void blue(int height, int width, RGB img[height][width])
+{
     return;
 }
