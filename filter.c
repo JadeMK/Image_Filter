@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
         fseek(infile, padding, SEEK_CUR);
     }
 
-    // Choose filter WIP
+    // Choose filter
     switch (*choice) {
         case 'r':
             red(height, width, img);
@@ -105,9 +105,11 @@ int main(int argc, char *argv[]) {
             fputc(0x00, outfile);
         }
     }
-    // Free memory
 
-    // Close files
+    // Free memory & Close files
+    free(img);
+    fclose(infile);
+    fclose(outfile);
 
     return 0;
 }
