@@ -142,6 +142,25 @@ void red(int height, int width, RGB img[height][width])
 
 void green(int height, int width, RGB img[height][width])
 {
+    // Iterate through the rows
+    for (int i = 0; i < height; i++)
+    {
+        // Replace each pixel with a new value
+        for (int j = 0; j < width; j++)
+        {
+            // Evaluate values
+            float check_gb;
+            check_gb = (img[i][j].rgbRed + img[i][j].rgbBlue) / 2.0;
+            if (img[i][j].rgbGreen - check_gb < 75)
+            {
+                // Apply with new values
+                float new_grey = (img[i][j].rgbRed + img[i][j].rgbGreen + img[i][j].rgbBlue) / 3.0;
+                img[i][j].rgbRed = round(new_grey);
+                img[i][j].rgbGreen = round(new_grey);
+                img[i][j].rgbBlue = round(new_grey);
+            }
+        }
+    }
     return;
 }
 
