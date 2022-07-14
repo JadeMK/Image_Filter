@@ -124,9 +124,9 @@ void red(int height, int width, RGB img[height][width])
         for (int j = 0; j < width; j++)
         {
             // Evaluate values
-            float check_gb;
-            check_gb = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
-            if (img[i][j].rgbRed - check_gb < 75)
+            float value_checker;
+            value_checker = (img[i][j].rgbBlue + img[i][j].rgbGreen) / 2.0;
+            if (img[i][j].rgbRed - value_checker < 75)
             {
                 // Apply with new values
                 float new_grey = (img[i][j].rgbRed + img[i][j].rgbGreen + img[i][j].rgbBlue) / 3.0;
@@ -149,9 +149,9 @@ void green(int height, int width, RGB img[height][width])
         for (int j = 0; j < width; j++)
         {
             // Evaluate values
-            float check_gb;
-            check_gb = (img[i][j].rgbRed + img[i][j].rgbBlue) / 2.0;
-            if (img[i][j].rgbGreen - check_gb < 75)
+            float value_checker;
+            value_checker = (img[i][j].rgbRed + img[i][j].rgbBlue) / 2.0;
+            if (img[i][j].rgbGreen - value_checker < 75)
             {
                 // Apply with new values
                 float new_grey = (img[i][j].rgbRed + img[i][j].rgbGreen + img[i][j].rgbBlue) / 3.0;
@@ -166,5 +166,24 @@ void green(int height, int width, RGB img[height][width])
 
 void blue(int height, int width, RGB img[height][width])
 {
+    // Iterate through the rows
+    for (int i = 0; i < height; i++)
+    {
+        // Replace each pixel with a new value
+        for (int j = 0; j < width; j++)
+        {
+            // Evaluate values
+            float value_checker;
+            value_checker = (img[i][j].rgbRed + img[i][j].rgbGreen) / 2.0;
+            if (img[i][j].rgbBlue - value_checker < 75)
+            {
+                // Apply with new values
+                float new_grey = (img[i][j].rgbRed + img[i][j].rgbGreen + img[i][j].rgbBlue) / 3.0;
+                img[i][j].rgbRed = round(new_grey);
+                img[i][j].rgbGreen = round(new_grey);
+                img[i][j].rgbBlue = round(new_grey);
+            }
+        }
+    }
     return;
 }
