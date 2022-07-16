@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     char *choice = argv[1];
     if (argc != 4 || strlen(choice) != 1 || strchr(filters, *choice) == NULL)
     {
-        printf("Usage: ./filter [r/g/b] infile.bmp outfile.bmp\n");
+        printf("Usage: ./filter <r/g/b> infile.bmp outfile.bmp\n");
         return 1;
     }
 
